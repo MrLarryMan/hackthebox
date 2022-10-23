@@ -3,6 +3,7 @@
 ## Enumeration
 
 To begin, I ran the following commands to find the open ports and then detailed information about them (its IP was **10.10.10.68**):
+
 ```bash
 nmap -Pn -n -vv --open -T4 10.10.10.68
 nmap -Pn -n -p 80 -vv --open -sV -sC -T4 10.10.10.68
@@ -27,7 +28,7 @@ Next, I tried to access the root directory, but I did not have the permissions f
 
 <img src="/Images/ImageB4.png" alt="Image4" width="75%"/>
 
-My next step was to look around for things I could use, and I found the Scripts folder, which was out of place. The folder was owned by scriptmanager, so I sudo -u'd as scriptmanager to take a look at the contents.
+My next step was to look around for things I could use, and I found the Scripts folder, which was out of place. The folder was owned by scriptmanager, so I used `sudo -u scriptmanager ls /scripts/` to take a look at the contents.
 
 <img src="/Images/ImageB5.png" alt="Image5" width="75%"/>
 
