@@ -7,3 +7,4 @@ My writeups regarding the boxes I've completed on HackTheBox
 2. [Bashed](Bashed/BashedWriteup.md)
 3. [Shocker](Shocker/ShockerWriteup.md)
 4. [Arctic](Arctic/ArcticWriteup.md)
+5. [RedPanda](RedPanda/RedPandaWriteup.md)
